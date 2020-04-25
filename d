@@ -8,26 +8,14 @@ if [ $# -gt 0 ]; then
     elif [ "$1" == "build" ] || [ "$1" == "b" ]; then
       npm run build
 
-    elif [ "$1" == "update" ] || [ "$1" == "u" ]; then
-      npm update
-
-    elif [ "$1" == "up" ] || [ "$1" == "serve" ]; then
-        JEKYLL_ENV=production bundle exec jekyll s --config _config.yml,__dev.yml
-
-    elif [ "$1" == "build" ] || [ "$1" == "b" ]; then
-
-      if [ ${JEKYLL_ENV} == 'production' ]; then
-        # explicitly add JEKYLL_ENV=production to generate public
-        JEKYLL_ENV=production bundle exec jekyll b --config _config.yml,__prod.yml
-      else
-        JEKYLL_ENV=development bundle exec jekyll b --config _config.yml,__dev.yml
-      fi
+    elif [ "$1" == "build-watch" ] || [ "$1" == "bw" ]; then
+      npm run build-watch
 
     else
-        JEKYLL_ENV=production bundle "$@"
+        node "$@"
+
     fi
 else
-    which ruby
-    which bundle
-    JEKYLL_ENV=production bundle exec jekyll -v
+    echo node [$(node -v)] $(which node)
+    echo npm [$(npm -v)] $(which npm)
 fi
