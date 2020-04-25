@@ -2,17 +2,17 @@
 
 if [ $# -gt 0 ]; then
 
-    if [ "$1" == "install" ] || [ "$1" == "i" ]; then
+    if [ "$1" == "install" ] || [ "$1" == "ins" ]; then
       npm install
 
-    elif [ "$1" == "build" ] || [ "$1" == "b" ]; then
+    elif [ "$1" == "build" ] || [ "$1" == "rb" ]; then
       npm run build
 
-    elif [ "$1" == "build-watch" ] || [ "$1" == "bw" ]; then
+    elif [ "$1" == "build-watch" ] || [ "$1" == "rbw" ]; then
       npm run build-watch
 
     else
-        node "$@"
+      npm "$@"
 
     fi
 else
